@@ -1,2 +1,8 @@
 .vagrant
 .DS_STORE
+.bowerrc
+.editorconfig
+
+node_modules/
+platforms/
+plugins/
