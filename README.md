@@ -1,2 +1,3 @@
-# fimdesemana
-Casa na praia
+setup google plus auth
+
+cordova plugin add cordova-plugin-googleplus

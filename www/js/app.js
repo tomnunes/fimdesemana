@@ -31,6 +31,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'services'])
     controller: 'WelcomeCtrl'
   })
 
+  .state('home', {
+    url: '/home',
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
+  })
+
   .state('app', {
     url: '/app',
     abstract: true,

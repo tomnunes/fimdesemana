@@ -21,12 +21,44 @@ angular.module('starter.controllers', [])
         });
 
         $ionicLoading.hide();
-        $state.go('app.home');
+        $state.go('home');
       },
       function (msg) {
         $ionicLoading.hide();
       }
     );
+  };
+})
+
+.controller('HomeCtrl', function($scope, UserService, $ionicActionSheet, $state, $ionicLoading){
+  $scope.user = UserService.getUser();
+
+  $scope.showLogOutMenu = function() {
+    var hideSheet = $ionicActionSheet.show({
+      destructiveText: 'Logout',
+      titleText: 'Are you sure you want to logout? This app is awsome so I recommend you to stay.',
+      cancelText: 'Cancel',
+      cancel: function() {},
+      buttonClicked: function(index) {
+        return true;
+      },
+      destructiveButtonClicked: function(){
+        $ionicLoading.show({
+          template: 'Logging out...'
+        });
+        // Google logout
+        window.plugins.googleplus.logout(
+          function (msg) {
+            console.log(msg);
+            $ionicLoading.hide();
+            $state.go('welcome');
+          },
+          function(fail){
+            console.log(fail);
+          }
+        );
+      }
+    });
   };
 })
 
